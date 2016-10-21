@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2034EA1DB610040030B86A /* TuguaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */; };
+		4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */; };
+		4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */; };
+		4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */; };
+		4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */; };
+		4FBC5CEA1DBA11D100C3F4D1 /* YituContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE91DBA11D100C3F4D1 /* YituContainerViewController.swift */; };
 		4FCE219B1DAF7620002BECEF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCE219A1DAF7620002BECEF /* Constants.swift */; };
 		4FE271581DB0D7C4001C65D2 /* TuguaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE271571DB0D7C4001C65D2 /* TuguaItem.swift */; };
 		4FE2715A1DB0DCBD001C65D2 /* TuguaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE271591DB0DCBD001C65D2 /* TuguaTableViewCell.swift */; };
+		4FE4C0DA1DB8609800A2376C /* LehuoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4C0D91DB8609800A2376C /* LehuoDetailViewController.swift */; };
 		4FE7893E1DAE41CB0084D1E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE7893D1DAE41CB0084D1E6 /* AppDelegate.swift */; };
 		4FE789431DAE41CB0084D1E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FE789411DAE41CB0084D1E6 /* Main.storyboard */; };
 		4FE789451DAE41CB0084D1E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FE789441DAE41CB0084D1E6 /* Assets.xcassets */; };
@@ -19,9 +26,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuguaDetailViewController.swift; sourceTree = "<group>"; };
+		4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoTableViewController.swift; sourceTree = "<group>"; };
+		4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoItem.swift; sourceTree = "<group>"; };
+		4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewController.swift; sourceTree = "<group>"; };
+		4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituDetailViewController.swift; sourceTree = "<group>"; };
+		4FBC5CE91DBA11D100C3F4D1 /* YituContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituContainerViewController.swift; sourceTree = "<group>"; };
 		4FCE219A1DAF7620002BECEF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4FE271571DB0D7C4001C65D2 /* TuguaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuguaItem.swift; sourceTree = "<group>"; };
 		4FE271591DB0DCBD001C65D2 /* TuguaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuguaTableViewCell.swift; sourceTree = "<group>"; };
+		4FE4C0D91DB8609800A2376C /* LehuoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoDetailViewController.swift; sourceTree = "<group>"; };
 		4FE7893A1DAE41CB0084D1E6 /* dapenti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dapenti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FE7893D1DAE41CB0084D1E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FE789421DAE41CB0084D1E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +69,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4F2034EB1DB61DE40030B86A /* lehuo */ = {
+			isa = PBXGroup;
+			children = (
+				4FB2A03C1DB75E49007AE46C /* Model */,
+				4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */,
+				4FE4C0D91DB8609800A2376C /* LehuoDetailViewController.swift */,
+			);
+			name = lehuo;
+			sourceTree = "<group>";
+		};
+		4FB2A03C1DB75E49007AE46C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4FBC5CE41DBA0FCD00C3F4D1 /* yitu */ = {
+			isa = PBXGroup;
+			children = (
+				4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */,
+				4FBC5CE91DBA11D100C3F4D1 /* YituContainerViewController.swift */,
+				4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */,
+			);
+			name = yitu;
+			sourceTree = "<group>";
+		};
 		4FCE21991DAF75FA002BECEF /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +126,9 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
+				4FBC5CE41DBA0FCD00C3F4D1 /* yitu */,
+				4F2034EB1DB61DE40030B86A /* lehuo */,
+				4FCE21991DAF75FA002BECEF /* Constants */,
 				4FE789511DAE431F0084D1E6 /* Tugua */,
 				4FE7893D1DAE41CB0084D1E6 /* AppDelegate.swift */,
 				4FE789411DAE41CB0084D1E6 /* Main.storyboard */,
@@ -97,10 +142,10 @@
 		4FE789511DAE431F0084D1E6 /* Tugua */ = {
 			isa = PBXGroup;
 			children = (
-				4FCE21991DAF75FA002BECEF /* Constants */,
 				4FE789531DAE432F0084D1E6 /* View */,
 				4FE789521DAE43260084D1E6 /* Model */,
 				4FE7894F1DAE430B0084D1E6 /* TuguaTableViewController.swift */,
+				4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */,
 			);
 			name = Tugua;
 			sourceTree = "<group>";
@@ -253,10 +298,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */,
 				4FE271581DB0D7C4001C65D2 /* TuguaItem.swift in Sources */,
 				4FE7893E1DAE41CB0084D1E6 /* AppDelegate.swift in Sources */,
+				4FBC5CEA1DBA11D100C3F4D1 /* YituContainerViewController.swift in Sources */,
 				4FE789501DAE430B0084D1E6 /* TuguaTableViewController.swift in Sources */,
+				4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */,
 				4FCE219B1DAF7620002BECEF /* Constants.swift in Sources */,
+				4F2034EA1DB610040030B86A /* TuguaDetailViewController.swift in Sources */,
+				4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */,
+				4FE4C0DA1DB8609800A2376C /* LehuoDetailViewController.swift in Sources */,
+				4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */,
 				4FE2715A1DB0DCBD001C65D2 /* TuguaTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -368,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

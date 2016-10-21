@@ -7,6 +7,8 @@
 //
 
 
-let serverAddress = "http://appb.dapenti.com/index.php"
+let serverAddress = "https://appb.dapenti.com/index.php"
+
+let kankanProductServerAddress = "https://prod-api.kankanapp.com.cn"
 
 
