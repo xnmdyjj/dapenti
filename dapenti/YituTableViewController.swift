@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Kingfisher
 
 class YituTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    var yituArray:[YituItem] = []
+    
+    var loadingData = false
+    
+    var page = 1
+    
+    let pageCount = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +30,72 @@ class YituTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        refreshControl = UIRefreshControl()
+        
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        
+        self.requestData()
+    
     }
+    
+    
+    func refresh() {
+        
+        page = 1
+        
+        self.requestData()
+    }
+    
+    
+    func requestData()  {
+        let urlString = serverAddress + "?s=/Home/api/yitu/p/\(page)/limit/\(pageCount)"
+        
+        let request = URLRequest(url: URL(string: urlString)!)
+        
+        let session = URLSession(configuration:.default, delegate: self, delegateQueue: nil)
+        
+        
+        let sesstionTask = session.dataTask(with: request) { (data, response, error) in
+            
+            DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
+            }
+            
+            if let error = error {
+                print("Error: \(error)")
+            } else if let data = data {
+                //print("Response: \(response)")
+                //print("DATA:\n\(string)\nEND DATA\n")
+                
+                let json = JSON(data: data)
+                let data = json["data"].arrayValue
+                
+                for json in data {
+                    
+                    let item = YituItem(json: json)
+                    
+                    self.yituArray.append(item)
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    self.spinner.stopAnimating()
+                    self.loadingData = false
+                    
+                }
+                
+            }
+        }
+        
+        sesstionTask.resume()
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -29,60 +106,65 @@ class YituTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.yituArray.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         // Configure the cell...
-
+        
+        let item = yituArray[indexPath.row]
+        
+        if let imgurl = item.imgurl {
+            
+            if let url = URL(string: imgurl) {
+                
+                let resource = ImageResource(downloadURL: url)
+                
+                cell.imageView?.kf.setImage(with: resource)
+                
+            }
+        }
+        
+        cell.textLabel?.text = item.title
+        
         return cell
     }
-    */
+    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        
+        if !loadingData && indexPath.row == yituArray.count - 1 {
+            spinner.startAnimating()
+            loadingData = true
+            page += 1
+            self.requestData()
+        }
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100.0
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "showContainerView", sender: nil)
+    
     }
-    */
+    
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -90,6 +172,22 @@ class YituTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
+
+}
+
+extension YituTableViewController:URLSessionDelegate {
+    
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        
+        
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            
+            let credential = URLCredential(trust: challenge.protectionSpace.serverTrust!)
+            
+            completionHandler(URLSession.AuthChallengeDisposition.useCredential, credential)
+            
+        }
+    }
 }

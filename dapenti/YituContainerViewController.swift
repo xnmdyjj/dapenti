@@ -9,11 +9,20 @@
 import UIKit
 
 class YituContainerViewController: UIViewController {
+    
+    var pageViewController:UIPageViewController!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+         pageViewController = self.childViewControllers.first as! UIPageViewController
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

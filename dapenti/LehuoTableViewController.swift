@@ -20,8 +20,6 @@ class LehuoTableViewController: UITableViewController {
     
     let pageCount = 10
     
-    var refreshPage = 0
-    
     var selectItem:LehuoItem?
     
     override func viewDidLoad() {
@@ -62,9 +60,11 @@ class LehuoTableViewController: UITableViewController {
             DispatchQueue.main.async {
 
                 self.refreshControl?.endRefreshing()
+                self.spinner.stopAnimating()
+                self.loadingData = false
 
             }
-            
+                        
             if let error = error {
                 print("Error: \(error)")
             } else if let data = data {
@@ -85,17 +85,11 @@ class LehuoTableViewController: UITableViewController {
                             
                         }
                         
-    
                         DispatchQueue.main.async {
                             
-                            self.refreshPage += self.pageCount
                             self.tableView.reloadData()
-                            self.spinner.stopAnimating()
-                            self.loadingData = false
                             
                         }
-                        
-                        
                     }
                 }
             }
@@ -142,7 +136,7 @@ class LehuoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if !loadingData && indexPath.row == refreshPage - 1 {
+        if !loadingData && indexPath.row == lehuoArray.count - 1 {
             spinner.startAnimating()
             loadingData = true
             page += 1
