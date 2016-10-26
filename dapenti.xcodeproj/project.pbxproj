@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F2034EA1DB610040030B86A /* TuguaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */; };
 		4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */; };
+		4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313921DC08197001F8273 /* DuanziTableViewController.swift */; };
+		4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313951DC08C1D001F8273 /* DuanziItem.swift */; };
+		4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */; };
 		4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */; };
 		4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */; };
 		4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuguaDetailViewController.swift; sourceTree = "<group>"; };
 		4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoTableViewController.swift; sourceTree = "<group>"; };
+		4F2313921DC08197001F8273 /* DuanziTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewController.swift; sourceTree = "<group>"; };
+		4F2313951DC08C1D001F8273 /* DuanziItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziItem.swift; sourceTree = "<group>"; };
+		4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewCell.swift; sourceTree = "<group>"; };
 		4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoItem.swift; sourceTree = "<group>"; };
 		4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewController.swift; sourceTree = "<group>"; };
 		4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituDetailViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +85,32 @@
 				4FE4C0D91DB8609800A2376C /* LehuoDetailViewController.swift */,
 			);
 			name = lehuo;
+			sourceTree = "<group>";
+		};
+		4F2313911DC07F3A001F8273 /* duanzi */ = {
+			isa = PBXGroup;
+			children = (
+				4F2313971DC08CE1001F8273 /* Cell */,
+				4F2313941DC08BF0001F8273 /* Model */,
+				4F2313921DC08197001F8273 /* DuanziTableViewController.swift */,
+			);
+			name = duanzi;
+			sourceTree = "<group>";
+		};
+		4F2313941DC08BF0001F8273 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F2313951DC08C1D001F8273 /* DuanziItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4F2313971DC08CE1001F8273 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		4FB2A03C1DB75E49007AE46C /* Model */ = {
@@ -137,6 +169,7 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
+				4F2313911DC07F3A001F8273 /* duanzi */,
 				4FBC5CE41DBA0FCD00C3F4D1 /* yitu */,
 				4F2034EB1DB61DE40030B86A /* lehuo */,
 				4FCE21991DAF75FA002BECEF /* Constants */,
@@ -311,14 +344,17 @@
 			files = (
 				4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */,
 				4FE271581DB0D7C4001C65D2 /* TuguaItem.swift in Sources */,
+				4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */,
 				4FE7893E1DAE41CB0084D1E6 /* AppDelegate.swift in Sources */,
 				4FBC5CEA1DBA11D100C3F4D1 /* YituContainerViewController.swift in Sources */,
 				4FE789501DAE430B0084D1E6 /* TuguaTableViewController.swift in Sources */,
 				4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */,
+				4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */,
 				4FCE219B1DAF7620002BECEF /* Constants.swift in Sources */,
 				4F2034EA1DB610040030B86A /* TuguaDetailViewController.swift in Sources */,
 				4FBC5CEC1DBA186000C3F4D1 /* YituItem.swift in Sources */,
 				4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */,
+				4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */,
 				4FE4C0DA1DB8609800A2376C /* LehuoDetailViewController.swift in Sources */,
 				4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */,
 				4FE2715A1DB0DCBD001C65D2 /* TuguaTableViewCell.swift in Sources */,

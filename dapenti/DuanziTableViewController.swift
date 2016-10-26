@@ -1,20 +1,17 @@
 //
-//  YituTableViewController.swift
+//  DuanziTableViewController.swift
 //  dapenti
 //
-//  Created by 喻建军 on 2016/10/21.
+//  Created by 喻建军 on 2016/10/26.
 //  Copyright © 2016年 yujianjun. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
-import Kingfisher
 
-class YituTableViewController: UITableViewController {
-    
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    
-    var yituArray:[YituItem] = []
+class DuanziTableViewController: UITableViewController {
+
+    var duanziArray:[DuanziItem] = []
     
     var loadingData = false
     
@@ -22,7 +19,7 @@ class YituTableViewController: UITableViewController {
     
     let pageCount = 20
     
-    var selectIndex:Int = 0
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +30,9 @@ class YituTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         
         refreshControl = UIRefreshControl()
         
@@ -40,9 +40,8 @@ class YituTableViewController: UITableViewController {
         
         
         self.requestData()
-    
+        
     }
-    
     
     func refresh() {
         
@@ -53,7 +52,7 @@ class YituTableViewController: UITableViewController {
     
     
     func requestData()  {
-        let urlString = serverAddress + "?s=/Home/api/yitu/p/\(page)/limit/\(pageCount)"
+        let urlString = serverAddress + "?s=/Home/api/duanzi/p/\(page)/limit/\(pageCount)"
         
         let request = URLRequest(url: URL(string: urlString)!)
         
@@ -77,9 +76,9 @@ class YituTableViewController: UITableViewController {
                 
                 for json in data {
                     
-                    let item = YituItem(json: json)
+                    let item = DuanziItem(json: json)
                     
-                    self.yituArray.append(item)
+                    self.duanziArray.append(item)
                 }
                 
                 DispatchQueue.main.async {
@@ -97,7 +96,6 @@ class YituTableViewController: UITableViewController {
         
     }
     
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -113,38 +111,32 @@ class YituTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.yituArray.count
+        return self.duanziArray.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "duanziCell", for: indexPath) as! DuanziTableViewCell
 
         // Configure the cell...
         
-        let item = yituArray[indexPath.row]
+        let item = self.duanziArray[indexPath.row]
         
-        if let imgurl = item.imgurl {
-            
-            if let url = URL(string: imgurl) {
-                
-                let resource = ImageResource(downloadURL: url)
-                
-                cell.imageView?.kf.setImage(with: resource)
-                
-            }
-        }
+        let aux = "<span style=\"font-family: Helvetica; font-size: 17\">\(item.description!)</span>"
+
+        let data = aux.data(using: .unicode)
         
-        cell.textLabel?.text = item.title
+        let attrStr = try? NSAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil)
+        
+        cell.desLabel.attributedText = attrStr
         
         return cell
     }
     
-
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         
-        if !loadingData && indexPath.row == yituArray.count - 1 {
+        if !loadingData && indexPath.row == duanziArray.count - 1 {
             spinner.startAnimating()
             loadingData = true
             page += 1
@@ -152,44 +144,21 @@ class YituTableViewController: UITableViewController {
         }
         
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 100.0
-    }
 
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.selectIndex = indexPath.row
-        
-        self.performSegue(withIdentifier: "showContainerView", sender: nil)
-    
-    }
-    
-
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showContainerView" {
-            
-            let controller = segue.destination as! YituContainerViewController
-            
-            controller.currentIndex = selectIndex
-            controller.yituArray = yituArray
-        }
     }
-    
-
+    */
 
 }
 
-extension YituTableViewController:URLSessionDelegate {
+
+extension DuanziTableViewController:URLSessionDelegate {
     
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
