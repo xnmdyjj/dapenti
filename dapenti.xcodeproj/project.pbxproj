@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1A39FD1DC1F12D00C94506 /* YituTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1A39FC1DC1F12D00C94506 /* YituTableViewCell.swift */; };
 		4F2034EA1DB610040030B86A /* TuguaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */; };
 		4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */; };
 		4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313921DC08197001F8273 /* DuanziTableViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F1A39FC1DC1F12D00C94506 /* YituTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewCell.swift; sourceTree = "<group>"; };
 		4F2034E91DB610040030B86A /* TuguaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuguaDetailViewController.swift; sourceTree = "<group>"; };
 		4F2034EC1DB61DF80030B86A /* LehuoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoTableViewController.swift; sourceTree = "<group>"; };
 		4F2313921DC08197001F8273 /* DuanziTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			name = Share;
 			sourceTree = "<group>";
 		};
+		4F1A39FB1DC1F11500C94506 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F1A39FC1DC1F12D00C94506 /* YituTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		4F2034EB1DB61DE40030B86A /* lehuo */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 		4FBC5CE41DBA0FCD00C3F4D1 /* yitu */ = {
 			isa = PBXGroup;
 			children = (
+				4F1A39FB1DC1F11500C94506 /* Cell */,
 				4FBC5CED1DBA186500C3F4D1 /* Model */,
 				4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */,
 				4FBC5CE91DBA11D100C3F4D1 /* YituContainerViewController.swift */,
@@ -363,6 +374,7 @@
 				4FBC5CEC1DBA186000C3F4D1 /* YituItem.swift in Sources */,
 				4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */,
 				4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */,
+				4F1A39FD1DC1F12D00C94506 /* YituTableViewCell.swift in Sources */,
 				4FE4C0DA1DB8609800A2376C /* LehuoDetailViewController.swift in Sources */,
 				4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */,
 				4FE2715A1DB0DCBD001C65D2 /* TuguaTableViewCell.swift in Sources */,

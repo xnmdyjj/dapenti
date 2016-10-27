@@ -118,7 +118,7 @@ class YituTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! YituTableViewCell
 
         // Configure the cell...
         
@@ -130,12 +130,12 @@ class YituTableViewController: UITableViewController {
                 
                 let resource = ImageResource(downloadURL: url)
                 
-                cell.imageView?.kf.setImage(with: resource)
+                cell.iconView?.kf.setImage(with: resource)
                 
             }
         }
         
-        cell.textLabel?.text = item.title
+        cell.titleLabel?.text = item.title
         
         return cell
     }
