@@ -225,7 +225,7 @@
         <scene sceneID="4c3-Ig-M1p">
             <objects>
                 <navigationController id="GnU-DU-6ua" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="段子" id="BXT-Es-CNo"/>
+                    <tabBarItem key="tabBarItem" title="段子" image="duanzi_nor" id="BXT-Es-CNo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dY0-Wt-ZoD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -273,7 +273,7 @@
         <scene sceneID="LBB-Kb-oAs">
             <objects>
                 <navigationController id="v8r-lD-tdn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="意图" id="mmw-qU-Zyk"/>
+                    <tabBarItem key="tabBarItem" title="意图" image="yitu_nor" id="mmw-qU-Zyk"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dlg-c7-okM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -289,7 +289,7 @@
         <!--Lehuo Detail View Controller-->
         <scene sceneID="wM7-ed-qlP">
             <objects>
-                <viewController id="nxE-CG-7Rr" customClass="LehuoDetailViewController" customModule="dapenti" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="nxE-CG-7Rr" customClass="LehuoDetailViewController" customModule="dapenti" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mph-ql-sKN"/>
                         <viewControllerLayoutGuide type="bottom" id="Sp7-66-Nve"/>
@@ -308,7 +308,7 @@
         <scene sceneID="lTs-of-eXn">
             <objects>
                 <navigationController id="DiC-6l-0f6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="乐活" id="JiH-zE-aNg"/>
+                    <tabBarItem key="tabBarItem" title="乐活" image="wenzhang_nor" id="JiH-zE-aNg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M1x-rk-5DZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -325,7 +325,7 @@
         <scene sceneID="u9Y-OS-OuB">
             <objects>
                 <navigationController id="VYP-zi-QoQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="图卦" id="2wN-wr-2Pb"/>
+                    <tabBarItem key="tabBarItem" title="图卦" image="tugua_nor" id="2wN-wr-2Pb"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FOh-TR-clc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -367,4 +367,10 @@
             <point key="canvasLocation" x="2802" y="1242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="duanzi_nor" width="25" height="25"/>
+        <image name="tugua_nor" width="25" height="25"/>
+        <image name="wenzhang_nor" width="25" height="25"/>
+        <image name="yitu_nor" width="25" height="25"/>
+    </resources>
 </document>
