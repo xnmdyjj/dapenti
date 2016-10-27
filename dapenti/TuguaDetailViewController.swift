@@ -22,6 +22,7 @@ class TuguaDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         webView = WKWebView()
+        webView.scrollView.delegate = self
         view.addSubview(webView)
         
         webView.snp.makeConstraints { (make) in
@@ -56,4 +57,21 @@ class TuguaDetailViewController: UIViewController {
     }
     */
 
+}
+
+extension TuguaDetailViewController:UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let translation = scrollView.panGestureRecognizer.translation(in: self.webView)
+        
+        if translation.y < 0 {
+            
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            
+        }else {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+        }
+    }
 }

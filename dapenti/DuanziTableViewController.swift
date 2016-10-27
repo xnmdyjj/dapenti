@@ -33,7 +33,6 @@ class DuanziTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        
         refreshControl = UIRefreshControl()
         
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)

@@ -77,6 +77,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4F1A39F51DC1A42400C94506 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
 		4F2034EB1DB61DE40030B86A /* lehuo */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +176,7 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
+				4F1A39F51DC1A42400C94506 /* Share */,
 				4F2313911DC07F3A001F8273 /* duanzi */,
 				4FBC5CE41DBA0FCD00C3F4D1 /* yitu */,
 				4F2034EB1DB61DE40030B86A /* lehuo */,
