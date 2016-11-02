@@ -33,7 +33,27 @@ class TuguaTableViewController: UITableViewController {
         
         refreshControl?.addTarget(self, action: #selector(requestData), for: .valueChanged)
 
-        requestData()
+        
+        let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
+        
+        if let data  = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) {
+            
+            self.tuguaArray = data as! Array
+            
+            
+            for item in self.tuguaArray {
+                
+                if let imageUrl = item.imgurl {
+                    self.handleImageHeight(imageUrlString: imageUrl);
+                }
+            }
+            
+            self.tableView.reloadData()
+            
+        }else {
+            
+            requestData()
+        }
     }
     
 
@@ -272,6 +292,9 @@ extension TuguaTableViewController:URLSessionDelegate, URLSessionDataDelegate{
                         }
                     }
                     
+                    
+                    let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
+                    NSKeyedArchiver.archiveRootObject(self.tuguaArray, toFile: filePath)
                     
                     DispatchQueue.main.async {
                         

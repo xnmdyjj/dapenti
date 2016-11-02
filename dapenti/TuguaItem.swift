@@ -8,26 +8,40 @@
 
 import Foundation
 
-struct TuguaItem {
+class TuguaItem: NSObject, NSCoding {
     
     var title:String?
     var link:String?
-    var description:String?
+    var desc:String?
     var imgurl:String?
-
-}
-
-extension TuguaItem {
-
+    
     init(json:[String:Any]) {
         
         self.title = json["title"] as! String?
         
         self.link = json["link"] as! String?
         
-        self.description = json["description"] as! String?
+        self.desc = json["description"] as! String?
         
         self.imgurl = json["imgurl"] as! String?
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        title = aDecoder.decodeObject(forKey: "title") as! String?
+        
+        link = aDecoder.decodeObject(forKey: "link") as! String?
+        
+        desc = aDecoder.decodeObject(forKey: "description") as! String?
+        
+        imgurl = aDecoder.decodeObject(forKey: "imgurl") as! String?
+        
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(title, forKey: "title")
+        aCoder.encode(link, forKey: "link")
+        aCoder.encode(desc, forKey: "description")
+        aCoder.encode(imgurl, forKey: "imgurl")
+    }
+
 }
