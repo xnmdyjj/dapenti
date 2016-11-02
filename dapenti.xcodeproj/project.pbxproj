@@ -13,6 +13,7 @@
 		4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313921DC08197001F8273 /* DuanziTableViewController.swift */; };
 		4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313951DC08C1D001F8273 /* DuanziItem.swift */; };
 		4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */; };
+		4F86C80D1DC9D34800B0C791 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F86C80C1DC9D34800B0C791 /* 180.png */; };
 		4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */; };
 		4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */; };
 		4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */; };
@@ -37,6 +38,7 @@
 		4F2313921DC08197001F8273 /* DuanziTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewController.swift; sourceTree = "<group>"; };
 		4F2313951DC08C1D001F8273 /* DuanziItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziItem.swift; sourceTree = "<group>"; };
 		4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewCell.swift; sourceTree = "<group>"; };
+		4F86C80C1DC9D34800B0C791 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoItem.swift; sourceTree = "<group>"; };
 		4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewController.swift; sourceTree = "<group>"; };
 		4FBC5CE71DBA10EB00C3F4D1 /* YituDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituDetailViewController.swift; sourceTree = "<group>"; };
@@ -77,13 +79,6 @@
 				610B5803A1BB9537F5D39552 /* Pods-dapenti.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		4F1A39F51DC1A42400C94506 /* Share */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Share;
 			sourceTree = "<group>";
 		};
 		4F1A39FB1DC1F11500C94506 /* Cell */ = {
@@ -128,6 +123,14 @@
 				4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		4F86C80B1DC9D33E00B0C791 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4F86C80C1DC9D34800B0C791 /* 180.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		4FB2A03C1DB75E49007AE46C /* Model */ = {
@@ -187,7 +190,7 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
-				4F1A39F51DC1A42400C94506 /* Share */,
+				4F86C80B1DC9D33E00B0C791 /* Images */,
 				4F2313911DC07F3A001F8273 /* duanzi */,
 				4FBC5CE41DBA0FCD00C3F4D1 /* yitu */,
 				4F2034EB1DB61DE40030B86A /* lehuo */,
@@ -303,6 +306,7 @@
 				4FE789481DAE41CB0084D1E6 /* LaunchScreen.storyboard in Resources */,
 				4FE789451DAE41CB0084D1E6 /* Assets.xcassets in Resources */,
 				4FE789431DAE41CB0084D1E6 /* Main.storyboard in Resources */,
+				4F86C80D1DC9D34800B0C791 /* 180.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ class LehuoDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
          
         webView = WKWebView()
-        webView.scrollView.delegate = self
+        //webView.scrollView.delegate = self
         view.addSubview(webView)
         
         webView.snp.makeConstraints { (make) in
@@ -59,7 +59,7 @@ class LehuoDetailViewController: UIViewController {
 }
 
 
-
+/*
 extension LehuoDetailViewController:UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -75,4 +75,4 @@ extension LehuoDetailViewController:UIScrollViewDelegate {
             
         }
     }
-}
+}*/

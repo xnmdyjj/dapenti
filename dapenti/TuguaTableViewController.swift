@@ -199,7 +199,7 @@ class TuguaTableViewController: UITableViewController {
             
         }
         
-        return 100;
+        return 245;
     }
     
     
@@ -222,7 +222,7 @@ class TuguaTableViewController: UITableViewController {
             
             let controller = segue.destination as! TuguaDetailViewController
             
-            controller.urlString = selectItem?.description
+            controller.urlString = selectItem?.desc
             
         }
     }
@@ -293,10 +293,13 @@ extension TuguaTableViewController:URLSessionDelegate, URLSessionDataDelegate{
                     }
                     
                     
-                    let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
-                    NSKeyedArchiver.archiveRootObject(self.tuguaArray, toFile: filePath)
-                    
                     DispatchQueue.main.async {
+                        
+                        
+                        let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
+                        NSKeyedArchiver.archiveRootObject(self.tuguaArray, toFile: filePath)
+                        
+                    
                         
                         self.tableView.reloadData()
                     }
