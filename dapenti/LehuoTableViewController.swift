@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LehuoTableViewController: UITableViewController {
 
@@ -37,13 +38,13 @@ class LehuoTableViewController: UITableViewController {
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
     
+        SVProgressHUD.show()
         self.requestData()
     }
     
     func refresh() {
         
         page = 1
-        
         self.requestData()
     }
     
@@ -60,6 +61,7 @@ class LehuoTableViewController: UITableViewController {
             DispatchQueue.main.async {
 
                 self.refreshControl?.endRefreshing()
+                SVProgressHUD.dismiss()
                 self.spinner.stopAnimating()
                 self.loadingData = false
 
@@ -78,13 +80,17 @@ class LehuoTableViewController: UITableViewController {
                     
                     if let data = dict["data"] as? [Any] {
                         
+                        if self.page == 1 {
+                            self.lehuoArray.removeAll()
+                        }
+                        
                         for dict in data {
                             let item = LehuoItem(json: dict as! [String:Any])
                             
                             self.lehuoArray.append(item)
                             
                         }
-                        
+
                         DispatchQueue.main.async {
                             
                             self.tableView.reloadData()

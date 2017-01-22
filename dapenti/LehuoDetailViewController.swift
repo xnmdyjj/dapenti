@@ -8,8 +8,9 @@
 
 import UIKit
 import WebKit
+import SVProgressHUD
 
-class LehuoDetailViewController: UIViewController {
+class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
 
     var webView:WKWebView!
     
@@ -22,6 +23,7 @@ class LehuoDetailViewController: UIViewController {
          
         webView = WKWebView()
         //webView.scrollView.delegate = self
+        webView.navigationDelegate = self
         view.addSubview(webView)
         
         webView.snp.makeConstraints { (make) in
@@ -38,6 +40,31 @@ class LehuoDetailViewController: UIViewController {
             }
         }
 
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        
+        SVProgressHUD.show()
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        SVProgressHUD.dismiss()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        SVProgressHUD.dismiss()
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        
+        SVProgressHUD.dismiss()
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        SVProgressHUD.dismiss()
+        
     }
 
     override func didReceiveMemoryWarning() {

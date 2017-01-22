@@ -31,7 +31,7 @@ class TuguaTableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         
-        refreshControl?.addTarget(self, action: #selector(requestData), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
         
         let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
@@ -54,6 +54,13 @@ class TuguaTableViewController: UITableViewController {
             
             requestData()
         }
+    }
+    
+    
+    
+    func refresh() {
+        
+        self.requestData()
     }
     
 
@@ -278,6 +285,8 @@ extension TuguaTableViewController:URLSessionDelegate, URLSessionDataDelegate{
                 
                 if let data = dict["data"] as? [Any] {
                     
+                    self.tuguaArray.removeAll()
+
                     for dict in data {
                         let item = TuguaItem(json: dict as! [String:Any])
                         
@@ -299,17 +308,13 @@ extension TuguaTableViewController:URLSessionDelegate, URLSessionDataDelegate{
                         let filePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] + "/tugua.data"
                         NSKeyedArchiver.archiveRootObject(self.tuguaArray, toFile: filePath)
                         
-                    
-                        
+
                         self.tableView.reloadData()
                     }
-                    
-                    
+                
                 }
             }
             
         }
-
-        
     }
 }

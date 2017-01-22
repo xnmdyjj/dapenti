@@ -9,8 +9,9 @@
 import UIKit
 import WebKit
 import SnapKit
+import SVProgressHUD
 
-class TuguaDetailViewController: UIViewController {
+class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     var webView:WKWebView!
     
@@ -23,6 +24,7 @@ class TuguaDetailViewController: UIViewController {
         
         webView = WKWebView()
         //webView.scrollView.delegate = self
+        webView.navigationDelegate = self
         view.addSubview(webView)
         
         webView.snp.makeConstraints { (make) in
@@ -46,6 +48,31 @@ class TuguaDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    
+        SVProgressHUD.show()
+    }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        SVProgressHUD.dismiss()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        SVProgressHUD.dismiss()
+
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        
+        SVProgressHUD.dismiss()
+
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        SVProgressHUD.dismiss()
+
+    }
 
     /*
     // MARK: - Navigation
@@ -58,6 +85,7 @@ class TuguaDetailViewController: UIViewController {
     */
 
 }
+
 /*
 extension TuguaDetailViewController:UIScrollViewDelegate {
     

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Kingfisher
+import SVProgressHUD
 
 class YituTableViewController: UITableViewController {
     
@@ -38,7 +39,7 @@ class YituTableViewController: UITableViewController {
         
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        
+        SVProgressHUD.show()
         self.requestData()
     
     }
@@ -47,7 +48,6 @@ class YituTableViewController: UITableViewController {
     func refresh() {
         
         page = 1
-        
         self.requestData()
     }
     
@@ -64,6 +64,7 @@ class YituTableViewController: UITableViewController {
             
             DispatchQueue.main.async {
                 self.refreshControl?.endRefreshing()
+                SVProgressHUD.dismiss()
             }
             
             if let error = error {
@@ -74,6 +75,10 @@ class YituTableViewController: UITableViewController {
                 
                 let json = JSON(data: data)
                 let data = json["data"].arrayValue
+                
+                if self.page == 1 {
+                    self.yituArray.removeAll()
+                }
                 
                 for json in data {
                     

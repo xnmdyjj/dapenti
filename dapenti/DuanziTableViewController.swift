@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import SVProgressHUD
 
 class DuanziTableViewController: UITableViewController {
 
@@ -37,7 +38,7 @@ class DuanziTableViewController: UITableViewController {
         
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        
+        SVProgressHUD.show()
         self.requestData()
         
     }
@@ -45,7 +46,6 @@ class DuanziTableViewController: UITableViewController {
     func refresh() {
         
         page = 1
-        
         self.requestData()
     }
     
@@ -62,6 +62,7 @@ class DuanziTableViewController: UITableViewController {
             
             DispatchQueue.main.async {
                 self.refreshControl?.endRefreshing()
+                SVProgressHUD.dismiss()
             }
             
             if let error = error {
@@ -72,6 +73,10 @@ class DuanziTableViewController: UITableViewController {
                 
                 let json = JSON(data: data)
                 let data = json["data"].arrayValue
+                
+                if self.page == 1 {
+                    self.duanziArray.removeAll()
+                }
                 
                 for json in data {
                     
