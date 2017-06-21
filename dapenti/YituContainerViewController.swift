@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class YituContainerViewController: UIViewController {
     
@@ -24,6 +25,10 @@ class YituContainerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
+        self.navigationItem.rightBarButtonItem = shareBarButtonItem
+        
+        
         let controller = YituDetailViewController()
         
         let item = yituArray[currentIndex]
@@ -39,6 +44,57 @@ class YituContainerViewController: UIViewController {
         pageViewController.setViewControllers([controller], direction: .forward, animated: false, completion: nil)
         
     }
+    
+    func shareAction() {
+        let item = yituArray[currentIndex]
+        
+        var activityItems:[Any] = []
+        if let shareTitle = item.title  {
+            activityItems.append(shareTitle)
+        }
+        
+        if let imageUrl = item.imgurl {
+            if let shareImage = self.getCachedImage(imageUrlString: imageUrl) {
+                activityItems.append(shareImage)
+            }
+        }
+        
+        if let shareLink = item.description {
+            if let shareUrl = URL(string:shareLink) {
+                activityItems.append(shareUrl)
+            }
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.airDrop, .copyToPasteboard, .assignToContact, .print, .mail, .postToTencentWeibo, .saveToCameraRoll, .message]
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    
+    func getCachedImage(imageUrlString:String) -> UIImage? {
+        
+        let isCached = ImageCache.default.isImageCached(forKey: imageUrlString)
+        
+        if isCached.cached {
+            
+            let imageFromMemory = ImageCache.default.retrieveImageInMemoryCache(forKey: imageUrlString)
+            
+            if imageFromMemory != nil {
+                
+                return imageFromMemory
+                
+            }else {
+                let imageFromDisk = ImageCache.default.retrieveImageInDiskCache(forKey: imageUrlString)
+                
+                if imageFromDisk != nil {
+                    
+                    return imageFromDisk
+                }
+            }
+        }
+        return nil
+    }
+    
 
     func viewControllerAtIndex(index:Int) -> YituDetailViewController {
         
@@ -64,23 +120,6 @@ class YituContainerViewController: UIViewController {
         return viewControllers.index(where: {$0 === viewController})
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension YituContainerViewController:UIPageViewControllerDataSource , UIPageViewControllerDelegate {
@@ -112,5 +151,9 @@ extension YituContainerViewController:UIPageViewControllerDataSource , UIPageVie
         }
         
         return nil
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
     }
 }

@@ -10,17 +10,23 @@ import UIKit
 import WebKit
 import SnapKit
 import SVProgressHUD
+import Kingfisher
 
 class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     var webView:WKWebView!
     
     var urlString:String?
+    
+    var tuguaInfo:TuguaItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
+        self.navigationItem.rightBarButtonItem = shareBarButtonItem
         
         webView = WKWebView()
         //webView.scrollView.delegate = self
@@ -43,11 +49,56 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func shareAction() {
+        guard let item = tuguaInfo else {
+            return
+        }
+        
+        var activityItems:[Any] = []
+        if let shareTitle = item.title  {
+            activityItems.append(shareTitle)
+        }
+        
+        if let imageUrl = item.imgurl {
+            if let shareImage = self.getCachedImage(imageUrlString: imageUrl) {
+                activityItems.append(shareImage)
+            }
+        }
+        
+        if let shareLink = item.desc {
+            if let shareUrl = URL(string:shareLink) {
+                activityItems.append(shareUrl)
+            }
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.airDrop, .copyToPasteboard, .assignToContact, .print, .mail, .postToTencentWeibo, .saveToCameraRoll, .message]
+        self.present(activityVC, animated: true, completion: nil)
     }
     
+    func getCachedImage(imageUrlString:String) -> UIImage? {
+        
+        let isCached = ImageCache.default.isImageCached(forKey: imageUrlString)
+        
+        if isCached.cached {
+            
+            let imageFromMemory = ImageCache.default.retrieveImageInMemoryCache(forKey: imageUrlString)
+            
+            if imageFromMemory != nil {
+                
+                return imageFromMemory
+                
+            }else {
+                let imageFromDisk = ImageCache.default.retrieveImageInDiskCache(forKey: imageUrlString)
+                
+                if imageFromDisk != nil {
+                    
+                    return imageFromDisk
+                }
+            }
+        }
+        return nil
+    }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
     

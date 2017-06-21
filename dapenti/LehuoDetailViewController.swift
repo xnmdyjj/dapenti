@@ -16,11 +16,16 @@ class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
     
     var urlString:String?
     
+    var lehuoInfo: LehuoItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-         
+        
+        let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
+        self.navigationItem.rightBarButtonItem = shareBarButtonItem
+        
         webView = WKWebView()
         //webView.scrollView.delegate = self
         webView.navigationDelegate = self
@@ -40,6 +45,27 @@ class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
             }
         }
 
+    }
+    
+    func shareAction() {
+        guard let item = lehuoInfo else {
+            return
+        }
+        
+        var activityItems:[Any] = []
+        if let shareTitle = item.title  {
+            activityItems.append(shareTitle)
+        }
+        
+        if let shareLink = item.description {
+            if let shareUrl = URL(string:shareLink) {
+                activityItems.append(shareUrl)
+            }
+        }
+        
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activityVC.excludedActivityTypes = [.airDrop, .copyToPasteboard, .assignToContact, .print, .mail, .postToTencentWeibo, .saveToCameraRoll, .message]
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {

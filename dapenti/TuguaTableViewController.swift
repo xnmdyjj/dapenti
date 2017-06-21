@@ -121,7 +121,6 @@ class TuguaTableViewController: UITableViewController {
                     
                     ImageCache.default.store(image!, forKey: urlString!)
                 }
-    
             }
         }
     }
@@ -230,7 +229,7 @@ class TuguaTableViewController: UITableViewController {
             let controller = segue.destination as! TuguaDetailViewController
             
             controller.urlString = selectItem?.desc
-            
+            controller.tuguaInfo = selectItem
         }
     }
     

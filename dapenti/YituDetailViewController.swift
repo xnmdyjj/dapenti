@@ -38,6 +38,22 @@ class YituDetailViewController: UIViewController {
             }
         }
     }
+    
+    func getImage() -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(self.webView.bounds.size, true, 0)
+        for subView: UIView in self.webView.subviews {
+            subView.drawHierarchy(in: subView.bounds, afterScreenUpdates: true)
+        }
+        //UIApplication.sharedApplication().keyWindow?.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //let imagRef = CGImageCreateWithImageInRect((image?.CGImage)!, context.fromViewController.webView.bounds)
+        //let newImage = UIImage.init(CGImage: imagRef!)
+        
+        return image!
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -174,6 +174,7 @@ class LehuoTableViewController: UITableViewController {
             let controller = segue.destination as! LehuoDetailViewController
             
             controller.urlString = self.selectItem?.description
+            controller.lehuoInfo = self.selectItem
         }
     }
     
