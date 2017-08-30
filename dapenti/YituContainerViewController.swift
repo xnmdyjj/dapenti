@@ -25,6 +25,8 @@ class YituContainerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.updateTitle()
+        
         let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         self.navigationItem.rightBarButtonItem = shareBarButtonItem
         
@@ -43,6 +45,12 @@ class YituContainerViewController: UIViewController {
         pageViewController.delegate = self
         pageViewController.setViewControllers([controller], direction: .forward, animated: false, completion: nil)
         
+    }
+    
+    func updateTitle() {
+        
+        self.navigationItem.title = String(self.currentIndex) + "/" + String(yituArray.count)
+
     }
     
     func shareAction() {

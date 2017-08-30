@@ -19,6 +19,7 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     var urlString:String?
     
     var tuguaInfo:TuguaItem?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,7 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
         self.present(activityVC, animated: true, completion: nil)
     }
     
+    
     func getCachedImage(imageUrlString:String) -> UIImage? {
         
         let isCached = ImageCache.default.isImageCached(forKey: imageUrlString)
@@ -111,6 +113,8 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
+        
+        
 
     }
     
