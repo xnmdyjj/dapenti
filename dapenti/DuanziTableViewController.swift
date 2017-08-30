@@ -152,7 +152,9 @@ class DuanziTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let item = self.duanziArray[indexPath.row]
+        UIPasteboard.general.string = item.description
+        SVProgressHUD.showSuccess(withStatus: "已复制")
     }
 }
 

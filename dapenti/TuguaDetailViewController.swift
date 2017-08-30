@@ -11,8 +11,9 @@ import WebKit
 import SnapKit
 import SVProgressHUD
 import Kingfisher
+import GoogleMobileAds
 
-class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
+class TuguaDetailViewController: UIViewController, WKNavigationDelegate, GADBannerViewDelegate {
     
     var webView:WKWebView!
     
@@ -20,15 +21,19 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     var tuguaInfo:TuguaItem?
     
+    var bannerView: GADBannerView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        
         let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         self.navigationItem.rightBarButtonItem = shareBarButtonItem
         
+
         webView = WKWebView()
         //webView.scrollView.delegate = self
         webView.navigationDelegate = self
@@ -47,6 +52,17 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
                 webView.load(request)
             }
         }
+        
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner, origin: CGPoint(x: (kScreenWidth - kGADAdSizeBanner.size.width)/2, y: kScreenHeight - kGADAdSizeBanner.size.height))
+        
+        bannerView.delegate = self
+        self.view.addSubview(bannerView)
+        //bannerView.adUnitID = "ca-app-pub-8461828727506882/2269890330"
+        bannerView.adUnitID = adId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
     
     }
 
@@ -113,9 +129,10 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
-        
-        
-
+        let js = "var y = document.getElementsByClassName('adsbygoogle');for (var i = 0; i < y.length; i++) {y[i].style.display = 'none';}"
+        webView.evaluateJavaScript(js) { (response, error) in
+            print(error ?? "no error")
+        }
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
@@ -138,6 +155,40 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("adViewDidReceiveAd")
+    }
+    
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+                didFailToReceiveAdWithError error: GADRequestError) {
+        print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+    
+    /// Tells the delegate that a full screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("adViewWillPresentScreen")
+    }
+    
+    /// Tells the delegate that the full screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewWillDismissScreen")
+    }
+    
+    /// Tells the delegate that the full screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+        print("adViewDidDismissScreen")
+    }
+    
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+        print("adViewWillLeaveApplication")
+    }
 
 }
 

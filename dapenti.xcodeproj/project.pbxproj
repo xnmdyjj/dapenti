@@ -14,6 +14,8 @@
 		4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313951DC08C1D001F8273 /* DuanziItem.swift */; };
 		4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */; };
 		4F5B8EE31F5693E100FD3318 /* NSString+JKHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B8EE21F5693E100FD3318 /* NSString+JKHTML.m */; };
+		4F5B8EEA1F56B6D900FD3318 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B8EE91F56B6D900FD3318 /* AdTableViewCell.swift */; };
+		4F5B8EEC1F56B87300FD3318 /* AppMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B8EEB1F56B87300FD3318 /* AppMacro.swift */; };
 		4F86C80D1DC9D34800B0C791 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F86C80C1DC9D34800B0C791 /* 180.png */; };
 		4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */; };
 		4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */; };
@@ -42,6 +44,8 @@
 		4F5B8EE01F5693E000FD3318 /* dapenti-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dapenti-Bridging-Header.h"; sourceTree = "<group>"; };
 		4F5B8EE11F5693E100FD3318 /* NSString+JKHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKHTML.h"; sourceTree = "<group>"; };
 		4F5B8EE21F5693E100FD3318 /* NSString+JKHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKHTML.m"; sourceTree = "<group>"; };
+		4F5B8EE91F56B6D900FD3318 /* AdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
+		4F5B8EEB1F56B87300FD3318 /* AppMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMacro.swift; sourceTree = "<group>"; };
 		4F86C80C1DC9D34800B0C791 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoItem.swift; sourceTree = "<group>"; };
 		4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,14 @@
 			name = category;
 			sourceTree = "<group>";
 		};
+		4F5B8EED1F56B87600FD3318 /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				4F5B8EEB1F56B87300FD3318 /* AppMacro.swift */,
+			);
+			name = constant;
+			sourceTree = "<group>";
+		};
 		4F86C80B1DC9D33E00B0C791 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +215,7 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
+				4F5B8EED1F56B87600FD3318 /* constant */,
 				4F5B8EE41F5693E600FD3318 /* category */,
 				4F86C80B1DC9D33E00B0C791 /* Images */,
 				4F2313911DC07F3A001F8273 /* duanzi */,
@@ -243,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				4FE271591DB0DCBD001C65D2 /* TuguaTableViewCell.swift */,
+				4F5B8EE91F56B6D900FD3318 /* AdTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -335,9 +349,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-dapenti/Pods-dapenti-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -350,13 +373,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dapenti-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C20AE59BD5CFF3F537000C4D /* [CP] Copy Pods Resources */ = {
@@ -381,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F5B8EEC1F56B87300FD3318 /* AppMacro.swift in Sources */,
 				4FBC5CE81DBA10EB00C3F4D1 /* YituDetailViewController.swift in Sources */,
 				4FE271581DB0D7C4001C65D2 /* TuguaItem.swift in Sources */,
 				4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */,
@@ -396,6 +423,7 @@
 				4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */,
 				4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */,
 				4F1A39FD1DC1F12D00C94506 /* YituTableViewCell.swift in Sources */,
+				4F5B8EEA1F56B6D900FD3318 /* AdTableViewCell.swift in Sources */,
 				4FE4C0DA1DB8609800A2376C /* LehuoDetailViewController.swift in Sources */,
 				4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */,
 				4FE2715A1DB0DCBD001C65D2 /* TuguaTableViewCell.swift in Sources */,

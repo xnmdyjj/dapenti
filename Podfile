@@ -7,4 +7,5 @@ target 'dapenti' do
   pod 'SnapKit'
   pod 'SwiftyJSON'
   pod 'SVProgressHUD'
+  pod 'Google-Mobile-Ads-SDK'
 end

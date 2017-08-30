@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import GoogleMobileAds
 
 class TuguaTableViewController: UITableViewController {
     
@@ -28,6 +29,8 @@ class TuguaTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.register(AdTableViewCell.self, forCellReuseIdentifier: "adCell")
         
         refreshControl = UIRefreshControl()
         
@@ -167,45 +170,70 @@ class TuguaTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tuguaCell", for: indexPath) as! TuguaTableViewCell
-
-        // Configure the cell...
-
+        
         let item = tuguaArray[indexPath.row]
-    
-        cell.titleLabel.text = item.title
+
+        let title = item.title ?? ""
         
-        let url = URL(string: item.imgurl!)
+        if title == "AD" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as! AdTableViewCell
+            
+            cell.bannerView.rootViewController = self
+            // Configure the cell...
+            cell.bannerView.load(GADRequest())
+            
+            return cell
+            
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "tuguaCell", for: indexPath) as! TuguaTableViewCell
+            
+            // Configure the cell...
+            
+            
+            cell.titleLabel.text = item.title
+            
+            let url = URL(string: item.imgurl!)
+            
+            let resource = ImageResource(downloadURL: url!)
+            cell.coverImageView.kf.setImage(with: resource)
+            
+            return cell
+        }
         
-        let resource = ImageResource(downloadURL: url!)
-        cell.coverImageView.kf.setImage(with: resource)
-        
-        return cell
+       
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let item = tuguaArray[indexPath.row]
         
-        guard let imageUrl = item.imgurl else {
-            
-            return 44
-        }
+        let title = item.title ?? ""
         
-     
-        let imageHeight = imageheightAtUrl[imageUrl]
-        
-        if imageHeight != nil {
+        if title == "AD" {
             
-            if let title = item.title {
-                let titleHeight = self.handleTitleHeight(title: title)
+            return 116
+            
+        }else {
+            guard let imageUrl = item.imgurl else {
                 
-                return titleHeight + imageHeight! + 24
+                return 44
             }
             
+            
+            let imageHeight = imageheightAtUrl[imageUrl]
+            
+            if imageHeight != nil {
+                
+                if let title = item.title {
+                    let titleHeight = self.handleTitleHeight(title: title)
+                    
+                    return titleHeight + imageHeight! + 24
+                }
+                
+            }
+            
+            return 245;
         }
-        
-        return 245;
     }
     
     
@@ -213,7 +241,11 @@ class TuguaTableViewController: UITableViewController {
         
         self.selectItem = tuguaArray[indexPath.row]
         
-        self.performSegue(withIdentifier: "showTuguaDetail", sender: nil)
+        let title = self.selectItem?.title ?? ""
+        
+        if title != "AD" {
+            self.performSegue(withIdentifier: "showTuguaDetail", sender: nil)
+        }
     }
 
     

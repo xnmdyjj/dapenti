@@ -80,6 +80,11 @@ class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
         
+        let js = "var y = document.getElementsByClassName('adsbygoogle');for (var i = 0; i < y.length; i++) {y[i].style.display = 'none';}"
+        webView.evaluateJavaScript(js) { (response, error) in
+            print(error ?? "no error")
+        }
+        
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
