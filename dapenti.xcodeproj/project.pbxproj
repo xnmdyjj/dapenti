@@ -13,6 +13,7 @@
 		4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313921DC08197001F8273 /* DuanziTableViewController.swift */; };
 		4F2313961DC08C1D001F8273 /* DuanziItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313951DC08C1D001F8273 /* DuanziItem.swift */; };
 		4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */; };
+		4F5B8EE31F5693E100FD3318 /* NSString+JKHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5B8EE21F5693E100FD3318 /* NSString+JKHTML.m */; };
 		4F86C80D1DC9D34800B0C791 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F86C80C1DC9D34800B0C791 /* 180.png */; };
 		4FB2A03E1DB75E58007AE46C /* LehuoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */; };
 		4FBC5CE61DBA0FDF00C3F4D1 /* YituTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */; };
@@ -38,6 +39,9 @@
 		4F2313921DC08197001F8273 /* DuanziTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewController.swift; sourceTree = "<group>"; };
 		4F2313951DC08C1D001F8273 /* DuanziItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziItem.swift; sourceTree = "<group>"; };
 		4F2313981DC08CF2001F8273 /* DuanziTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuanziTableViewCell.swift; sourceTree = "<group>"; };
+		4F5B8EE01F5693E000FD3318 /* dapenti-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dapenti-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F5B8EE11F5693E100FD3318 /* NSString+JKHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JKHTML.h"; sourceTree = "<group>"; };
+		4F5B8EE21F5693E100FD3318 /* NSString+JKHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JKHTML.m"; sourceTree = "<group>"; };
 		4F86C80C1DC9D34800B0C791 /* 180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 180.png; sourceTree = "<group>"; };
 		4FB2A03D1DB75E58007AE46C /* LehuoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuoItem.swift; sourceTree = "<group>"; };
 		4FBC5CE51DBA0FDF00C3F4D1 /* YituTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YituTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		4F5B8EE41F5693E600FD3318 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				4F5B8EE11F5693E100FD3318 /* NSString+JKHTML.h */,
+				4F5B8EE21F5693E100FD3318 /* NSString+JKHTML.m */,
+			);
+			name = category;
+			sourceTree = "<group>";
+		};
 		4F86C80B1DC9D33E00B0C791 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +203,7 @@
 		4FE7893C1DAE41CB0084D1E6 /* dapenti */ = {
 			isa = PBXGroup;
 			children = (
+				4F5B8EE41F5693E600FD3318 /* category */,
 				4F86C80B1DC9D33E00B0C791 /* Images */,
 				4F2313911DC07F3A001F8273 /* duanzi */,
 				4FBC5CE41DBA0FCD00C3F4D1 /* yitu */,
@@ -201,6 +215,7 @@
 				4FE789441DAE41CB0084D1E6 /* Assets.xcassets */,
 				4FE789461DAE41CB0084D1E6 /* LaunchScreen.storyboard */,
 				4FE789491DAE41CB0084D1E6 /* Info.plist */,
+				4F5B8EE01F5693E000FD3318 /* dapenti-Bridging-Header.h */,
 			);
 			path = dapenti;
 			sourceTree = "<group>";
@@ -276,6 +291,7 @@
 					4FE789391DAE41CB0084D1E6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8RDH8AEPS5;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -370,6 +386,7 @@
 				4F2313991DC08CF2001F8273 /* DuanziTableViewCell.swift in Sources */,
 				4FE7893E1DAE41CB0084D1E6 /* AppDelegate.swift in Sources */,
 				4FBC5CEA1DBA11D100C3F4D1 /* YituContainerViewController.swift in Sources */,
+				4F5B8EE31F5693E100FD3318 /* NSString+JKHTML.m in Sources */,
 				4FE789501DAE430B0084D1E6 /* TuguaTableViewController.swift in Sources */,
 				4F2034ED1DB61DF80030B86A /* LehuoTableViewController.swift in Sources */,
 				4F2313931DC08197001F8273 /* DuanziTableViewController.swift in Sources */,
@@ -506,12 +523,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8RDH8AEPS5;
 				INFOPLIST_FILE = dapenti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yujianjun.dapenti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dapenti/dapenti-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -522,12 +542,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8RDH8AEPS5;
 				INFOPLIST_FILE = dapenti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yujianjun.dapenti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dapenti/dapenti-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

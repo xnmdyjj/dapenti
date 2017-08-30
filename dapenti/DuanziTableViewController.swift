@@ -126,13 +126,15 @@ class DuanziTableViewController: UITableViewController {
         
         let item = self.duanziArray[indexPath.row]
         
-        let aux = "<span style=\"font-family: Helvetica; font-size: 17\">\(item.description!)</span>"
-
-        let data = aux.data(using: .unicode)
+//        let aux = "<span style=\"font-family: Helvetica; font-size: 17\">\(item.description!)</span>"
+//
+//        let data = aux.data(using: .unicode)
+//        
+//        let attrStr = try? NSAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil)
         
-        let attrStr = try? NSAttributedString(data: data!, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType], documentAttributes: nil)
-        
-        cell.desLabel.attributedText = attrStr
+        let desStr = (item.description ?? "") as NSString
+        let des = desStr.jk_stringByConvertingHTMLToPlainText()
+        cell.desLabel.text = des
         
         return cell
     }
@@ -149,16 +151,9 @@ class DuanziTableViewController: UITableViewController {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
-    */
-
 }
 
 
