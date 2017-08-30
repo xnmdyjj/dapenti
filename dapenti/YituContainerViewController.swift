@@ -19,6 +19,7 @@ class YituContainerViewController: UIViewController {
     
     var viewControllers:[YituDetailViewController?] = []
     
+    var tempIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +45,10 @@ class YituContainerViewController: UIViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
         pageViewController.setViewControllers([controller], direction: .forward, animated: false, completion: nil)
-        
     }
     
     func updateTitle() {
-        
-        self.navigationItem.title = String(self.currentIndex) + "/" + String(yituArray.count)
-
+        self.navigationItem.title = String(self.currentIndex + 1) + "/" + String(yituArray.count)
     }
     
     func shareAction() {
@@ -144,7 +142,6 @@ extension YituContainerViewController:UIPageViewControllerDataSource , UIPageVie
         }
         
         return nil
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -163,5 +160,20 @@ extension YituContainerViewController:UIPageViewControllerDataSource , UIPageVie
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
+        if completed && finished {
+            self.currentIndex = self.tempIndex
+            self.updateTitle()
+        }
+        
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        
+        if let viewController = pendingViewControllers.first as? YituDetailViewController {
+            
+            if let index = self.indexOfViewController(viewController: viewController) {
+                self.tempIndex = index
+            }
+        }
     }
 }
