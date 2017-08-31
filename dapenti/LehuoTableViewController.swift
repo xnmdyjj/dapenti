@@ -185,8 +185,6 @@ class LehuoTableViewController: UITableViewController {
             controller.lehuoInfo = self.selectItem
         }
     }
-    
-
 }
 
 extension LehuoTableViewController:URLSessionDelegate {

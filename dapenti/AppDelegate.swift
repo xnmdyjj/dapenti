@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         SVProgressHUD.setDefaultStyle(.dark)
         GADMobileAds.configure(withApplicationID: "ca-app-pub-8461828727506882~1942587277")
+        
         return true
     }
 
