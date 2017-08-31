@@ -15,7 +15,7 @@ class YituDetailViewController: UIViewController {
     var webView:WKWebView!
     
     var urlString:String?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +37,7 @@ class YituDetailViewController: UIViewController {
                 webView.load(request)
             }
         }
+        
     }
     
     func getImage() -> UIImage {

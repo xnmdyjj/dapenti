@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import GoogleMobileAds
 
 class YituContainerViewController: UIViewController {
     
@@ -21,6 +22,8 @@ class YituContainerViewController: UIViewController {
     
     var tempIndex:Int = 0
     
+    var bannerView: GADBannerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +48,14 @@ class YituContainerViewController: UIViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
         pageViewController.setViewControllers([controller], direction: .forward, animated: false, completion: nil)
+        
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner, origin: CGPoint(x: (kScreenWidth - kGADAdSizeBanner.size.width)/2, y: kScreenHeight - kGADAdSizeBanner.size.height))
+        
+        self.view.addSubview(bannerView)
+        bannerView.adUnitID = adId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     func updateTitle() {

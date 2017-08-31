@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import SVProgressHUD
+import GoogleMobileAds
 
 class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
 
@@ -18,6 +19,8 @@ class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
     
     var lehuoInfo: LehuoItem?
     
+    var bannerView: GADBannerView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +48,12 @@ class LehuoDetailViewController: UIViewController, WKNavigationDelegate {
             }
         }
 
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner, origin: CGPoint(x: (kScreenWidth - kGADAdSizeBanner.size.width)/2, y: kScreenHeight - kGADAdSizeBanner.size.height))
+        
+        self.view.addSubview(bannerView)
+        bannerView.adUnitID = adId
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     func shareAction() {

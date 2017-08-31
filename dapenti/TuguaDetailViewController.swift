@@ -29,7 +29,6 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate, GADBann
 
         // Do any additional setup after loading the view.
         
-        
         let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         self.navigationItem.rightBarButtonItem = shareBarButtonItem
         
@@ -58,13 +57,22 @@ class TuguaDetailViewController: UIViewController, WKNavigationDelegate, GADBann
         
         bannerView.delegate = self
         self.view.addSubview(bannerView)
-        //bannerView.adUnitID = "ca-app-pub-8461828727506882/2269890330"
         bannerView.adUnitID = adId
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
-    
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.tapped(gesture:)));
+//        self.webView.addGestureRecognizer(gesture)
+        
     }
+    
+//    func tapped(gesture:UITapGestureRecognizer) {
+//        let touchPoint = gesture.location(in: self.webView)
+//        let js = "document.elementFromPoint(\(touchPoint.x), \(touchPoint.y)).src"
+//        self.webView.evaluateJavaScript(js) { (response, error) in
+//            print(error ?? "get url no error")
+//        }
+//    }
 
     func shareAction() {
         guard let item = tuguaInfo else {
