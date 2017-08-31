@@ -10,8 +10,9 @@ import UIKit
 import SwiftyJSON
 import SVProgressHUD
 import GoogleMobileAds
+import MessageUI
 
-class DuanziTableViewController: UITableViewController {
+class DuanziTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     var duanziArray:[DuanziItem] = []
     
@@ -32,6 +33,9 @@ class DuanziTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        let barButtonItem = UIBarButtonItem(title: "反馈", style: .plain, target: self, action: #selector(self.feedback))
+        self.navigationItem.rightBarButtonItem = barButtonItem
+        
         let headerView = AdHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 116))
         headerView.bannerView.rootViewController = self
         headerView.bannerView.load(GADRequest())
@@ -48,6 +52,41 @@ class DuanziTableViewController: UITableViewController {
         self.requestData()
         
     }
+    
+    func feedback() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients(["yu.me@foxmail.com"])
+        mailComposerVC.setSubject("喷嚏阅读反馈")
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertController(title: nil, message: "请检查邮箱配置", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+        sendMailErrorAlert.addAction(okAction)
+        
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
+    }
+
+    // MARK: MFMailComposeViewControllerDelegate
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+   
+
     
     func refresh() {
         
