@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import Kingfisher
 import SVProgressHUD
+import GoogleMobileAds
 
 class YituTableViewController: UITableViewController {
     
@@ -34,6 +35,11 @@ class YituTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        
+        let headerView = AdHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 116))
+        headerView.bannerView.rootViewController = self
+        headerView.bannerView.load(GADRequest())
+        self.tableView.tableHeaderView = headerView
         
         refreshControl = UIRefreshControl()
         
@@ -189,9 +195,6 @@ class YituTableViewController: UITableViewController {
             controller.yituArray = yituArray
         }
     }
-    
-
-
 }
 
 extension YituTableViewController:URLSessionDelegate {

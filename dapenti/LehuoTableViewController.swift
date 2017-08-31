@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import GoogleMobileAds
 
 class LehuoTableViewController: UITableViewController {
 
@@ -32,6 +33,10 @@ class LehuoTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        let headerView = AdHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 116))
+        headerView.bannerView.rootViewController = self
+        headerView.bannerView.load(GADRequest())
+        self.tableView.tableHeaderView = headerView
         
         refreshControl = UIRefreshControl()
         
@@ -130,7 +135,10 @@ class LehuoTableViewController: UITableViewController {
         
         let item = self.lehuoArray[indexPath.row]
         
-        cell.textLabel?.text = item.title
+        let desStr = (item.title ?? "") as NSString
+        let des = desStr.jk_stringByConvertingHTMLToPlainText()
+        
+        cell.textLabel?.text = des
 
         return cell
     }

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import SVProgressHUD
+import GoogleMobileAds
 
 class DuanziTableViewController: UITableViewController {
 
@@ -30,6 +31,11 @@ class DuanziTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let headerView = AdHeaderView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 116))
+        headerView.bannerView.rootViewController = self
+        headerView.bannerView.load(GADRequest())
+        self.tableView.tableHeaderView = headerView
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -153,7 +159,9 @@ class DuanziTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = self.duanziArray[indexPath.row]
-        UIPasteboard.general.string = item.description
+        let desStr = (item.description ?? "") as NSString
+        let des = desStr.jk_stringByConvertingHTMLToPlainText()
+        UIPasteboard.general.string = des
         SVProgressHUD.showSuccess(withStatus: "已复制")
     }
 }
