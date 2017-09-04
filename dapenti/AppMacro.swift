@@ -17,5 +17,5 @@ let kSandDocumentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPa
 let kScreenWidth: CGFloat = UIScreen.main.bounds.width
 let kScreenHeight: CGFloat = UIScreen.main.bounds.height
 
-//let adId = "ca-app-pub-8461828727506882/2269890330"
-let adId = "ca-app-pub-3940256099942544/6300978111"
+let adId = "ca-app-pub-8461828727506882/2269890330"
+//let adId = "ca-app-pub-3940256099942544/6300978111"
